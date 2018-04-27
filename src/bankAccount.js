@@ -1,12 +1,13 @@
+
 function BankAccount() {
   this.balance = 0
 }
 
-BankAccount.prototype.deposit = function (amount) {
-  this.balance += amount
+BankAccount.prototype.deposit = function (amount, date) {
+  return { date: date, amount: amount, balance: this.balance += amount }
 }
-BankAccount.prototype.withdrawal = function (amount) {
+BankAccount.prototype.withdrawal = function (amount, date) {
   if(this.balance < amount)
     throw new Error('Sorry, you balance is too low');
-  this.balance -= amount
+  return { date: date, amount: -amount, balance: this.balance -= amount }
 }
